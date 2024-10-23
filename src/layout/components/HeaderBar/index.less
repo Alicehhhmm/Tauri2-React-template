@@ -1,0 +1,40 @@
+.header {
+    // background-color: #5cc08e;
+    // background-color: #24c8db;
+    // background-color: #3949ab;
+    // background: linear-gradient(to right, #ffc131, #24c8db);
+    background-image: linear-gradient(to right, #ffc131, #a5d12a, #22d9b4, #20dcf3);
+    color: white;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+.header nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.header nav ul li {
+    margin-right: 1rem;
+    cursor: default;
+}
+
+.header nav ul li a {
+    text-decoration: none;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    transition: background-color 0.3s;
+}
+
+.header nav ul li a:hover,
+.header nav ul li a.active {
+    font-weight: 600;
+    color: #232425;
+}

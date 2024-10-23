@@ -1,0 +1,63 @@
+.layout-wrap {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: 'Open Sans', Arial, sans-serif;
+    color: #333;
+    background-color: #f8f8f8;
+}
+
+.content-wrap {
+    flex-grow: 1;
+    display: flex;
+    overflow: hidden;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .content-wrap {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        box-shadow: none;
+    }
+
+    .header nav ul {
+        flex-direction: column;
+    }
+
+    .header nav ul li {
+        margin-bottom: 0.5rem;
+    }
+}
+
+/* 添加一些过渡和动画效果 */
+.layout-wrap,
+.header,
+.sidebar,
+.content,
+.footer {
+    transition: all 0.3s ease-in-out;
+}
+
+/* 为按钮添加简单的动画效果 */
+button {
+    border: none;
+    background-color: #3949ab;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s;
+}
+
+button:hover {
+    background-color: #283593;
+    transform: scale(1.05);
+}
+
+button:active {
+    transform: scale(0.95);
+}
