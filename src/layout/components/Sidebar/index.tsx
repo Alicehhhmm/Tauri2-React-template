@@ -7,7 +7,7 @@ export default function SideBar() {
             <div className='sidebar'>
                 <ul>
                     <li>
-                        <NavLink to='/'>root</NavLink>
+                        <NavLink to='/exp'>Example</NavLink>
                     </li>
                     <li>
                         <NavLink to='/Home'>Home</NavLink>
