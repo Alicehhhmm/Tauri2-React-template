@@ -1,10 +1,12 @@
 @import './normalize.css';
+@import './common.css';
 
 :root {
     /* 明亮模式下的默认颜色变量 */
     --color-primary: #ffffff;
     --color-text: rgba(0, 0, 0, 0.87);
     --color-text-secondary: rgba(0, 0, 0, 0.6);
+    --color-hover-bg: #00ffff;
     --color-button-background: #f0f0f0;
     --color-button-text: rgba(0, 0, 0, 0.87);
     --color-link: #0000ee;
@@ -24,6 +26,7 @@
     --color-primary: #303030;
     --color-text: rgba(255, 255, 255, 0.87);
     --color-text-secondary: rgba(255, 255, 255, 0.6);
+    --color-hover-bg: #ffc900;
     --color-button-background: #1a1a1a;
     --color-button-text: rgba(255, 255, 255, 0.87);
     --color-link: #8796c5;
@@ -64,6 +67,11 @@ button {
 }
 
 button:hover {
-    background-color: var(--color-text-secondary);
-    color: var(--color-primary);
+    color: var(--color-hover-bg);
+    background-color: #283593;
+    transform: scale(1.05);
+}
+
+button:active {
+    transform: scale(0.95);
 }

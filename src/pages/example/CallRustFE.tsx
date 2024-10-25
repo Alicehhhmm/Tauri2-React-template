@@ -23,12 +23,10 @@ export default function CallRustFEPage() {
 
     return (
         <>
-            <button className='space' onClick={handleCommand1}>
-                GetRustComandFN1
-            </button>
-            <button className='space' onClick={handleCommand2}>
-                GetRustComandFN2
-            </button>
+            <div className='space'>
+                <button onClick={handleCommand1}>GetRustComandFN1</button>
+                <button onClick={handleCommand2}>GetRustComandFN2</button>
+            </div>
         </>
     )
 }

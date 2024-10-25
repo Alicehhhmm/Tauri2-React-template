@@ -3,31 +3,33 @@ import { setTheme } from '@tauri-apps/api/app'
 import { PiCloudSunLight, PiCloudMoon } from 'react-icons/pi'
 
 export default function ChangeTheme() {
-    const [isDark, setIsDark] = useState<boolean>(true)
-
-    function applyTheme(isDark: boolean) {
-        const html = document.querySelector('html')
-        console.log('html', html)
-
-        isDark ? html?.classList.add('dark') : html?.classList.remove('dark')
-        localStorage && localStorage.setItem('theme', isDark ? 'dark' : '')
-    }
-
-    function toggleDark() {
-        setIsDark(!isDark)
-        applyTheme(isDark)
-        setTheme(isDark ? 'dark' : 'light')
-    }
+    // current theme
+    const [isDark, setIsDark] = useState(() => {
+        const storedTheme = localStorage.getItem('theme')
+        if (storedTheme) return storedTheme === 'dark'
+        return window.matchMedia('(prefers-color-scheme: dark)').matches
+    })
 
     useEffect(() => {
         applyTheme(isDark)
-    }, [])
+    }, [isDark])
+
+    function applyTheme(isDark: boolean) {
+        const html = document.querySelector('html')
+        html && (isDark ? html.classList.add('dark') : html.classList.remove('dark'))
+        localStorage.setItem('theme', isDark ? 'dark' : 'light')
+        setTheme(isDark ? 'dark' : 'light')
+    }
+
+    function toggleDark() {
+        const newIsDark = !isDark
+        setIsDark(newIsDark)
+        applyTheme(newIsDark)
+    }
 
     return (
-        <>
-            <button className='swith' onClick={toggleDark}>
-                {isDark ? <PiCloudSunLight size={32} color='#ffc900' /> : <PiCloudMoon size={32} color='rgb(0, 255, 255)' />}
-            </button>
-        </>
+        <button className='switch' onClick={toggleDark}>
+            {isDark ? <PiCloudSunLight size={32} color='#ffc900' /> : <PiCloudMoon size={32} color='#00ffff' />}
+        </button>
     )
 }
