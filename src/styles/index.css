@@ -1,37 +1,106 @@
 @import './normalize.css';
 
-.space {
-    margin: 4px;
+:root {
+    /* 明亮模式下的默认颜色变量 */
+    --color-primary: #ffffff;
+    --color-text: rgba(0, 0, 0, 0.87);
+    --color-text-secondary: rgba(0, 0, 0, 0.6);
+    --color-button-background: #f0f0f0;
+    --color-button-text: rgba(0, 0, 0, 0.87);
+    --color-link: #0000ee;
+    --color-link-hover: #551a8b;
+
+    /* menu */
+    --color-manu-bg: whitesmoke;
+
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+    color-scheme: light dark; /* 启用颜色方案，支持明亮和暗黑模式 */
+}
+
+/* 暗黑模式样式，便于JS切换主题 */
+.dark {
+    --color-primary: #303030;
+    --color-text: rgba(255, 255, 255, 0.87);
+    --color-text-secondary: rgba(255, 255, 255, 0.6);
+    --color-button-background: #1a1a1a;
+    --color-button-text: rgba(255, 255, 255, 0.87);
+    --color-link: #8796c5;
+    --color-link-hover: #9ca4d0;
+
+    /* menu */
+    --color-manu-bg: #232426;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    min-height: 100vh;
+    color: var(--color-text);
+    background-color: var(--color-primary);
+}
+
+a {
+    color: var(--color-link);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--color-link-hover);
 }
 
 button {
+    border: none;
     border-radius: 8px;
-    border: 1px solid transparent;
     padding: 0.6em 1.2em;
     font-size: 1em;
     font-weight: 500;
-    font-family: inherit;
-    background-color: #1a1a1a;
+    background-color: var(--color-button-background);
+    color: var(--color-button-text);
     cursor: pointer;
-    transition: border-color 0.25s;
-}
-button:hover {
-    border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-    outline: 4px auto -webkit-focus-ring-color;
+    transition: background-color 0.25s, color 0.25s;
 }
 
-@media (prefers-color-scheme: light) {
+button:hover {
+    background-color: var(--color-text-secondary);
+    color: var(--color-primary);
+}
+
+/* 暗黑模式下的样式 */
+@media (prefers-color-scheme: dark) {
     :root {
-        color: #213547;
-        background-color: #ffffff;
+        /* 暗黑模式下的颜色变量 */
+        --color-primary: #303030;
+        --color-text: rgba(255, 255, 255, 0.87);
+        --color-text-secondary: rgba(255, 255, 255, 0.6);
+        --color-button-background: #1a1a1a;
+        --color-button-text: rgba(255, 255, 255, 0.87);
+        --color-link: #8796c5;
+        --color-link-hover: #9ca4d0;
     }
+
+    body {
+        color: var(--color-text);
+        background-color: var(--color-primary);
+    }
+
+    a {
+        color: var(--color-link);
+    }
+
     a:hover {
-        color: #747bff;
+        color: var(--color-link-hover);
     }
+
     button {
-        background-color: rgb(31, 153, 31);
+        background-color: var(--color-button-background);
+        color: var(--color-button-text);
+    }
+
+    button:hover {
+        background-color: var(--color-link);
+        color: var(--color-primary);
     }
 }
