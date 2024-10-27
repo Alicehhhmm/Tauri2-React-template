@@ -1,31 +1,34 @@
 import { useState, useEffect } from 'react'
-import { getCurrentWindow, Window } from '@tauri-apps/api/window'
+import { getCurrentWindow } from '@tauri-apps/api/window'
 import { WebviewWindow } from '@tauri-apps/api/WebviewWindow'
 import './index.less'
 
 export default function WindTopBar() {
     const [isMax, setIsMax] = useState(false)
-    let currentWindow = WebviewWindow.getCurrent()
+    let currentWindow = WebviewWindow.getCurrent() || getCurrentWindow()
+
+    const checkMaximized = async () => {
+        const maximized = await currentWindow.isMaximized()
+        setIsMax(maximized)
+    }
+
+    useEffect(() => {
+        checkMaximized()
+    }, [])
 
     const handleMinimize = () => {
-        // window.minimize()
-
-        const appWindow = new Window('main')
-        // appWindow.minimize()
-
-        getCurrentWindow().minimize()
-
-        console.log('handleMinimize', appWindow)
+        currentWindow.minimize()
+        console.log('handleMinimize', currentWindow, isMax)
     }
 
     const handleMaximize = () => {
-        console.log('handleMaximize', currentWindow)
+        console.log('handleMaximize', currentWindow, isMax)
         currentWindow.maximize()
         setIsMax(!isMax)
     }
 
     const handleUnMaximize = () => {
-        console.log('handleUnMaximize', currentWindow)
+        console.log('handleUnMaximize', currentWindow, isMax)
         currentWindow.unmaximize()
         setIsMax(!isMax)
     }
